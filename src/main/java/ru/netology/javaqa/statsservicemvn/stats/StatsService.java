@@ -1,56 +1,58 @@
-package ru.netology.javaqa.statsservicemvn.stats
+package ru.netology.javaqa.statsservicemvn.stats;
 
 public class StatsService {
 
-    public int getTotalSales (int[] Sales) {
+    public int getTotalSales (int[] sales) {
         int totalSales = 0;
-        for ( int num : Sales) {
+        for ( int num : sales) {
             totalSales = totalSales + num;
         }
         return totalSales;
     }
 
-    public int getAverageSales (int[] Sales) {
-        int average = getTotalSales(Sales);
-        return average / Sales.length;
+    public int getAverageSales (int[] sales) {
+        int average = getTotalSales(sales);
+        return average / sales.length;
     }
 
-    public int getMaxSales (int[] Sales) {
+    public int getMaxSales (int[] sales) {
         int maxMonth = 0;
 
-        for (int i = 0; i < Sales.length; i++) {
-            if (Sales [i] >= Sales[maxMonth]) {
+        for (int i = 0; i < sales.length; i++) {
+            if (sales [i] >= sales[maxMonth]) {
                 maxMonth = i;
             }
         }
         return maxMonth + 1;
     }
 
-    public int getMinSales (int[] Sales) {
+    public int getMinSales (int[] sales) {
         int minMonth = 0;
 
-        for (int i = 0; i < Sales.length; i++) {
-            if (Sales [i] <= Sales[minMonth]) {
+        for (int i = 0; i < sales.length; i++) {
+            if (sales [i] <= sales[minMonth]) {
                 minMonth = i;
             }
         }
         return minMonth + 1;
     }
 
-    public int getSumLowerAverageMonths (int[] Sales) {
+    public int getSumBelowAverageMonths (int[] sales) {
+        int average = getAverageSales(sales);
         int countBelow = 0;
-        for (int i = 0; i < Sales.length; i++) {
-            if (Sales [i] < getAverageSales(Sales)) {
+        for (int i = 0; i < sales.length; i++) {
+            if (sales [i] < average) {
                 countBelow++;
             }
         }
         return countBelow;
     }
 
-    public int getSumAboveAverageMonths (int[] Sales) {
+    public int getSumAboveAverageMonths (int[] sales) {
+        int average = getAverageSales(sales);
         int countAbove = 0;
-        for (int i = 0; i < Sales.length; i++) {
-            if (Sales [i] >= getAverageSales(Sales)) {
+        for (int i = 0; i < sales.length; i++) {
+            if (sales [i] >= average) {
                 countAbove++;
             }
         }
